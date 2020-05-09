@@ -42,7 +42,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --fil
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 WORKDIR /var/www
-#RUN usermod -u 1000 www-data
-#RUN chown -R www-data:www-data /var/www
+RUN usermod -u 1000 www-data
+RUN chown -R www-data:www-data /var/www
 
 

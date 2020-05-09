@@ -5,5 +5,5 @@ ADD server.key /etc/nginx/server.key
 ADD server.crt /etc/nginx/server.crt
 
 WORKDIR /var/www
-#RUN usermod -u 1000 www-data
-#RUN chown -R www-data:www-data /var/www
+RUN usermod -u 1000 www-data
+RUN chown -R www-data:www-data /var/www

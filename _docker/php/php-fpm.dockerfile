@@ -32,6 +32,6 @@ RUN docker-php-ext-install -j$(nproc) mysqli opcache pcntl pdo_mysql pdo_pgsql p
     && docker-php-ext-install intl
 
 WORKDIR /var/www
-#RUN usermod -u 1000 www-data
-#RUN chown -R www-data:www-data /var/www
+RUN usermod -u 1000 www-data
+RUN chown -R www-data:www-data /var/www
 
