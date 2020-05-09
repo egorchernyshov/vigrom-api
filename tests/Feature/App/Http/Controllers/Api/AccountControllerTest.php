@@ -77,6 +77,5 @@ class AccountControllerTest extends TestCase
     public function accountsProvider(): Generator
     {
         yield 'account number 241' => [241];
-        yield 'account number 242' => [242];
     }
 }
