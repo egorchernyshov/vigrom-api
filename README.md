@@ -9,29 +9,16 @@ API для работы с кошельком пользователя
 
 Для ручной проверки необходимо накатить миграции и заполнить базу тестовыми данными. В файле [requests.http](requests.http) образцы запросов.
 
-Запуск сервисов:
+Запуск:
 
 ```bash
-# Start services
-docker-compose up -d
-
-# Install dependencies
-docker-compose exec php-cli composer install
-
-# Database migrations
-docker-compose exec php-cli php artisan migrate:refresh
-
-# Filing tests data
-docker-compose exec php-cli php artisan db:seed
-
-# Run tests
-docker-compose exec php-cli composer test
-
+# see `make help`
+make
 ```
 
-Остановка сервисов
+Остановка
 
 ```bash
 # Stop services
-docker-compose up -d
+make stop
 ```
