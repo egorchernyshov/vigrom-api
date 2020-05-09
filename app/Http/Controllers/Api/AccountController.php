@@ -59,14 +59,13 @@ class AccountController extends Controller
      */
     private function writeHistory(AccountUpdateRequest $request, int $accountNumber): void
     {
-        $accountHistory = new AccountHistory([
+        AccountHistory::create([
             'value' => $request->input(AccountUpdateRequest::VALUE),
             'transaction_type' => $request->input(AccountUpdateRequest::TRANSACTION_TYPE),
             'currency' => $request->input(AccountUpdateRequest::CURRENCY),
             'change_reason' => $request->input(AccountUpdateRequest::CHANGE_REASON),
             'account_number' => $accountNumber,
-        ]);
-        $accountHistory->save();
+        ])->save();
     }
 
     /**
@@ -81,9 +80,10 @@ class AccountController extends Controller
     {
         $account = Account::whereKey($accountNumber);
         $currentBalance = $account->value('balance');
-        $data = ['balance' => $currentBalance + $this->getValue($request)];
 
-        return $account->update($data);
+        return $account->update([
+            'balance' => $currentBalance + $this->getValue($request)
+        ]);
     }
 
     /**
