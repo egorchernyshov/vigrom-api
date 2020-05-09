@@ -21,13 +21,13 @@ class LoggingServiceProvider extends ServiceProvider
                 $logger = new Logger('DB query', [
                     new StreamHandler(
                         storage_path('logs/db.log')
-                    )
+                    ),
                 ]);
 
                 $logger->debug('SQL', [
                     $query->sql,
                     $query->bindings,
-                    $query->time
+                    $query->time,
                 ]);
             });
         }

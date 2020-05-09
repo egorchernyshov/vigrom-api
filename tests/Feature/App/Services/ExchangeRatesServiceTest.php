@@ -46,7 +46,7 @@ class ExchangeRatesServiceTest extends TestCase
     private function mockExchangeRatesService(): void
     {
         $this->app->singleton(ExchangeRatesServiceContract::class, static function () {
-            return new class implements ExchangeRatesServiceContract {
+            return new class() implements ExchangeRatesServiceContract {
                 public function update(): bool
                 {
                     return true;

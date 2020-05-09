@@ -16,7 +16,7 @@ class ExchangeRatesServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(ExchangeRatesServiceContract::class, static function() {
+        $this->app->singleton(ExchangeRatesServiceContract::class, static function () {
             return new CBRExchangeRatesFetchingService();
         });
     }
@@ -52,6 +52,5 @@ class ExchangeRatesServiceProvider extends ServiceProvider
 
             return new CurrencyConversionService($data);
         });
-
     }
 }
