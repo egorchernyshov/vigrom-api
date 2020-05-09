@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(AccountSeeder::class);
+        $this->call(CBRExchangeRatesSeeder::class);
+        $this->call(AccountHistorySeeder::class);
+        $this->call(AccountBalanceUpdateSeeder::class);
     }
 }
