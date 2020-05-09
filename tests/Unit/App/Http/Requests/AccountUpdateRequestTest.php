@@ -11,7 +11,7 @@ class AccountUpdateRequestTest extends TestCase
 {
     use WithFaker;
 
-    public function test_empty(): void
+    public function test_empty_request_validation(): void
     {
         $request = new AccountUpdateRequest();
         self::assertCount(4, Validator::make([], $request->rules())->errors());

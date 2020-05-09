@@ -40,7 +40,7 @@ class AccountControllerTest extends TestCase
      *
      * @param int $accountNumber
      */
-    public function test_should_updating_balance(int $accountNumber): void
+    public function test_updating_balance(int $accountNumber): void
     {
         $currency = $this->faker->randomElement(['USD', 'RUB']);
 
@@ -76,6 +76,6 @@ class AccountControllerTest extends TestCase
 
     public function accountsProvider(): Generator
     {
-        yield 'account number 241' => [241];
+        yield 'Account number: 241' => [241];
     }
 }
