@@ -13,7 +13,7 @@ use Throwable;
 class AccountController extends Controller
 {
     /**
-     * Display the specified resource.
+     * @example `GET /api/balance/241`
      *
      * @param int $accountNumber
      *
@@ -27,7 +27,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @example `PUT /api/balance/241`
      *
      * @param int $accountNumber
      * @param AccountUpdateRequest $request
