@@ -40,7 +40,7 @@ class AccountController extends Controller
     {
         DB::beginTransaction();
 
-        $this->writeHistory($request, $accountNumber);
+        $this->writeHistory($accountNumber, $request);
 
         if ($this->updateBalance($accountNumber, $request)) {
             DB::commit();
@@ -54,18 +54,20 @@ class AccountController extends Controller
     }
 
     /**
-     * @param AccountUpdateRequest $request
      * @param int $accountNumber
+     * @param AccountUpdateRequest $request
      */
-    private function writeHistory(AccountUpdateRequest $request, int $accountNumber): void
+    private function writeHistory(int $accountNumber, AccountUpdateRequest $request): void
     {
-        AccountHistory::create([
+        $data = [
             'value' => $request->input(AccountUpdateRequest::VALUE),
             'transaction_type' => $request->input(AccountUpdateRequest::TRANSACTION_TYPE),
             'currency' => $request->input(AccountUpdateRequest::CURRENCY),
             'change_reason' => $request->input(AccountUpdateRequest::CHANGE_REASON),
             'account_number' => $accountNumber,
-        ])->save();
+        ];
+
+        AccountHistory::create($data)->save();
     }
 
     /**
