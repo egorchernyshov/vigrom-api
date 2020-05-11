@@ -1,6 +1,5 @@
 <?php
 
-use App\Services\CurrencyConversionService;
 use Illuminate\Database\Seeder;
 
 class AccountBalanceUpdateSeeder extends Seeder
@@ -23,19 +22,16 @@ class AccountBalanceUpdateSeeder extends Seeder
 
     public function getBalance(): int
     {
-        Cache::clear();
-        $service = app(CurrencyConversionService::class);
-
-        $valueInRubles = DB::table('account_histories')
+        $debit = DB::table('account_histories')
             ->where('account_number', self::ACCOUNT_NUMBER)
-            ->where('currency', 'RUB')
+            ->where('transaction_type', 'debit')
             ->sum('value');
 
-        $valueInUsd = DB::table('account_histories')
+        $credit = DB::table('account_histories')
             ->where('account_number', self::ACCOUNT_NUMBER)
-            ->where('currency', 'USD')
+            ->where('transaction_type', 'credit')
             ->sum('value');
 
-        return $valueInRubles + $service->convertUsdToRub($valueInUsd);
+        return $credit - $debit;
     }
 }

@@ -13,10 +13,12 @@ class CreateAccountHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('account_histories', function (Blueprint $table) {
+        Schema::create('account_histories', static function (Blueprint $table) {
             $table->id();
             $table->timestampTz('created_at')->useCurrent();
-            $table->integer('value');
+            $table->unsignedInteger('value');
+            $table->unsignedInteger('original_value');
+            $table->unsignedInteger('exchange_rate_id')->nullable();
             $table->enum('transaction_type', ['debit', 'credit']);
             $table->enum('currency', ['USD', 'RUB']);
             $table->enum('change_reason', ['stock', 'refund']);

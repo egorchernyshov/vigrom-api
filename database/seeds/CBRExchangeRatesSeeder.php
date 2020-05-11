@@ -14,12 +14,11 @@ class CBRExchangeRatesSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        DB::table('exchange_rates')->insert([
-            'name' => $faker->sentence,
-            'num_code' => $faker->numberBetween(),
-            'char_code' => $faker->word,
-            'nominal' => 1,
-            'value' => $faker->randomFloat(null, 1, 100),
-        ]);
+        $count = 10;
+        while ($count--) {
+            DB::table('exchange_rates')->insert([
+                'value' => $faker->randomFloat(null, 1, 100),
+            ]);
+        }
     }
 }
