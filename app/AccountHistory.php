@@ -8,6 +8,8 @@ class AccountHistory extends Model
 {
     protected $fillable = [
         'value',
+        'original_value',
+        'exchange_rate_id',
         'transaction_type',
         'currency',
         'change_reason',
