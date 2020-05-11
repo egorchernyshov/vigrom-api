@@ -3,6 +3,7 @@
 namespace Tests\Unit\App\Http\Requests;
 
 use App\Http\Requests\AccountUpdateRequest;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Validator;
 use Tests\TestCase;
@@ -10,6 +11,7 @@ use Tests\TestCase;
 class AccountUpdateRequestTest extends TestCase
 {
     use WithFaker;
+    use DatabaseMigrations;
 
     public function test_empty_request_validation(): void
     {
