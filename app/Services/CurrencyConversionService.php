@@ -4,15 +4,8 @@ namespace App\Services;
 
 class CurrencyConversionService
 {
-    private $usdToRubRate;
-
-    public function __construct($ratios)
+    public static function convertUsd($value, float $rate): int
     {
-        $this->usdToRubRate = (float) $ratios['usd_to_rub'];
-    }
-
-    public function convertUsdToRub($value): int
-    {
-        return round($value) * round($this->usdToRubRate);
+        return round($value) * round($rate);
     }
 }

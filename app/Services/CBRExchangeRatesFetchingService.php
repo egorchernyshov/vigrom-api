@@ -41,15 +41,7 @@ final class CBRExchangeRatesFetchingService implements ExchangeRatesServiceContr
     private function addData(DOMElement $item): bool
     {
         $model = new ExchangeRates([
-            'num_code' => $item->getElementsByTagName('NumCode')->item(0)->nodeValue,
-            'char_code' => $item->getElementsByTagName('CharCode')->item(0)->nodeValue,
-            'nominal' => $item->getElementsByTagName('Nominal')->item(0)->nodeValue,
-            'name' => $item->getElementsByTagName('Name')->item(0)->nodeValue,
-            'value' => (float) str_replace(
-                ',',
-                '.',
-                $item->getElementsByTagName('Value')->item(0)->nodeValue
-            ),
+            'value' => (float) str_replace(',', '.', $item->getElementsByTagName('Value')->item(0)->nodeValue),
         ]);
 
         return $model->save();
