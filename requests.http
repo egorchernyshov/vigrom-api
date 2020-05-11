@@ -7,6 +7,17 @@ Content-Type: application/json
 
 {
   "value":  "100",
+  "transaction_type": "debit",
+  "currency":  "RUB",
+  "change_reason": "stock"
+}
+
+###
+PUT http://localhost/api/balance/241
+Content-Type: application/json
+
+{
+  "value":  "100",
   "transaction_type": "credit",
   "currency":  "RUB",
   "change_reason": "stock"
@@ -17,7 +28,7 @@ PUT http://localhost/api/balance/241
 Content-Type: application/json
 
 {
-  "value":  "-100",
+  "value":  "100",
   "transaction_type": "debit",
   "currency":  "USD",
   "change_reason": "stock"
@@ -26,3 +37,10 @@ Content-Type: application/json
 ###
 PUT http://localhost/api/balance/241
 Content-Type: application/json
+
+{
+  "value":  "100",
+  "transaction_type": "credit",
+  "currency":  "USD",
+  "change_reason": "stock"
+}
